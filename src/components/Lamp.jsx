@@ -1,9 +1,11 @@
-import React, {useContext} from "react";
-import {ModeContext} from "../providers/ModeProvider";
+import React from "react";
 import '../style/lamp.css'
+import {useSelector} from "react-redux";
+import {getBrightness, getColor} from "../store/selectors/lampSelectors";
 
 const Lamp = () => {
-    const {lightColor, brightness} = useContext(ModeContext);
+    const brightness = useSelector(getBrightness);
+    const lightColor = useSelector(getColor);
 
     return (
         <div className="lamp">
