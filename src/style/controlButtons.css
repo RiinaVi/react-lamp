@@ -1,0 +1,92 @@
+.control__switch {
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    height: 34px;
+}
+
+.control__switch #checkbox {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.control__switch__slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.control__switch__slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+#checkbox:checked + .control__switch__slider {
+    background-color: #2196F3;
+}
+
+
+#checkbox:checked + .control__switch__slider:before {
+    transform: translateX(66px);
+}
+
+.control__button--red button {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin: 50px;
+    border: 1px solid #D25068;
+    background: #D25068 linear-gradient(to bottom, #F66C7B, #D25068);
+    border-radius: 50%;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset, 0 4px 0 #AD4257, 0 4px 2px rgba(0, 0, 0, .5);
+    cursor: pointer;
+}
+
+.control__button--red button:active {
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset;
+    top: 5px;
+}
+
+.control__button--red button:active::before {
+    top: -11px;
+    bottom: -5px;
+    content: "";
+}
+
+.control__brightness button{
+    background-color: #4CAF50;
+    border: 1px solid green;
+    color: white;
+    padding: 10px 24px;
+    cursor: pointer;
+    float: left;
+}
+
+.control__brightness button:not(:last-child) {
+    border-right: none;
+}
+
+.control__brightness:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.control__brightness button:hover {
+    background-color: #3e8e41;
+}

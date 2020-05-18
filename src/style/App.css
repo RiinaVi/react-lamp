@@ -1,0 +1,17 @@
+.container {
+    width: 100%;
+    height: 420px;
+    background: #98dfe5;
+    margin: auto;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    overflow: hidden;
+}
+
+.control{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
