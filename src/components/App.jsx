@@ -1,19 +1,19 @@
 import React from 'react';
-import Lamp from "../components/Lamp";
-import BrightnessButtons from "../components/BrightnessButtons";
-import RedButton from "../components/RedButton";
-import Switcher from "../components/Switcher";
+import BrightnessButtonsContainer from "../containers/BrightnessButtonsContainer";
+import SwitcherContainer from "../containers/SwitcherContainer";
+import RedButtonContainer from "../containers/RedButtonContainer";
+import LampContainer from "../containers/LampContainer";
 import '../style/App.css';
 
 function App() {
 
   return (
           <div className={'container'}>
-              <Lamp/>
+              <LampContainer/>
               <div className={"control"}>
-                  <BrightnessButtons/>
-                  <RedButton/>
-                  <Switcher/>
+                  <BrightnessButtonsContainer/>
+                  <RedButtonContainer/>
+                  <SwitcherContainer/>
               </div>
           </div>
   );

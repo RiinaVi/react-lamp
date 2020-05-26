@@ -1,11 +1,7 @@
 import React from "react";
 import '../style/lamp.css'
-import {useSelector} from "react-redux";
-import {getBrightness, getColor} from "../store/selectors/lampSelectors";
 
-const Lamp = () => {
-    const brightness = useSelector(getBrightness);
-    const lightColor = useSelector(getColor);
+const Lamp = ({brightness, lightColor}) => {
 
     return (
         <div className="lamp">

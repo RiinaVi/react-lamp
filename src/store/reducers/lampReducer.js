@@ -4,7 +4,6 @@ import {
 
 const initialState = {
     mode: 0,
-    color: '',
     brightness: 0.3,
     enabled: true
 };
@@ -15,7 +14,6 @@ export default function lampReducer(state = initialState, {type, payload}) {
             return {
                 ...state,
                 mode: payload.mode,
-                color: payload.color,
             };
         case CHANGE_BRIGHTNESS:
             return {
