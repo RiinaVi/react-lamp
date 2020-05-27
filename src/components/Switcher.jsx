@@ -1,7 +1,16 @@
 import React from "react";
 import '../style/controlButtons.css'
+import {useDispatch, useSelector} from "react-redux";
+import {getEnabled} from "../store/selectors/lampSelectors";
+import {toggleSwitcher} from "../store/actions/lampActions";
 
-const Switcher = ({enabled, changeHandler}) => {
+const Switcher = () => {
+    const enabled = useSelector(getEnabled);
+    const dispatch = useDispatch();
+
+    const changeHandler = () => {
+        dispatch(toggleSwitcher())
+    }
 
     return(
         <label className="control__switch">

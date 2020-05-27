@@ -1,7 +1,23 @@
 import React from "react";
 import '../style/controlButtons.css'
+import {useDispatch, useSelector} from "react-redux";
+import {getEnabled} from "../store/selectors/lampSelectors";
+import {decreaseBrightness, increaseBrightness} from "../store/actions/lampActions";
 
-const BrightnessButtons = ({decreaseHandler, increaseHandler}) => {
+const BrightnessButtons = () => {
+
+    const dispatch = useDispatch();
+    const enabled = useSelector(getEnabled);
+
+    const decreaseHandler = () => {
+        if(!enabled) return;
+        dispatch(decreaseBrightness())
+    }
+
+    const increaseHandler = () => {
+        if(!enabled) return;
+        dispatch((increaseBrightness()))
+    }
 
 
     return(
