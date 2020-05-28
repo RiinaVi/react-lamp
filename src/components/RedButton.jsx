@@ -1,15 +1,12 @@
 import React from "react";
-import '../style/controlButtons.css'
-import {useDispatch, useSelector} from "react-redux";
-import {getEnabled} from "../store/selectors/lampSelectors";
+import {useDispatch} from "react-redux";
 import {toggleMode} from "../store/actions/lampActions";
+import '../style/controlButtons.css';
 
 const RedButton = () => {
     const dispatch = useDispatch();
-    const enabled = useSelector(getEnabled);
 
-    const toggleModeHandler = ()=>{
-        if(!enabled) return;
+    const toggleModeHandler = () => {
         dispatch(toggleMode());
     }
 
