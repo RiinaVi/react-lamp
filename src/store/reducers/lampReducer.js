@@ -32,7 +32,7 @@ export default function lampReducer(state = initialState, {type}) {
             return {
                 ...state,
                 enabled: !state.enabled,
-                mode: state.enabled ? 2 : 0,
+                mode: state.enabled ? LAMP_STATES[2] : LAMP_STATES[0],
                 brightness: BRIGHTNESS_STATES.INITIAL_BRIGHTNESS
             }
         default:
