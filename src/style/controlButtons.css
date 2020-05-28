@@ -39,7 +39,6 @@
     background-color: #2196F3;
 }
 
-
 #checkbox:checked + .control__switch__slider:before {
     transform: translateX(66px);
 }
@@ -68,7 +67,7 @@
     content: "";
 }
 
-.control__brightness button{
+.control__brightness button {
     background-color: #4CAF50;
     border: 1px solid green;
     color: white;
