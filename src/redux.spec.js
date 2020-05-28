@@ -32,18 +32,18 @@ describe('lamp reducer', () => {
         expect(lampReducer(undefined, {})).toEqual(initialState)
     })
     it.each
-        `      action             |    initialState                        |              changedState
-            ${TOGGLE_MODE}        |${initialState}                         | ${{mode:1,brightness:0.3,enabled:true}}
-            ${TOGGLE_SWITCHER}    |${initialState}                         | ${{mode:2,brightness:0.3,enabled:false}}
-            ${INCREASE_BRIGHTNESS}|${initialState}                         | ${{mode:0,brightness:0.4,enabled:true}}
-            ${DECREASE_BRIGHTNESS}|${initialState}                         | ${{mode:0,brightness:0.2,enabled:true}}
-            ${TOGGLE_MODE}        |${{mode:1,brightness:0.3,enabled:true}} | ${{mode:2,brightness:0.3,enabled:true}}
-            ${TOGGLE_MODE}        |${{mode:2,brightness:0.3,enabled:true}} | ${{mode:0,brightness:0.3,enabled:true}}
-            ${TOGGLE_SWITCHER}    |${{mode:0,brightness:0.3,enabled:false}}| ${{mode:0,brightness:0.3,enabled:true}}
-            ${TOGGLE_SWITCHER}    |${{mode:0,brightness:1,enabled:false}}  | ${{mode:0,brightness:0.3,enabled:true}}
-            ${TOGGLE_SWITCHER}    |${{mode:0,brightness:1,enabled:true}}   | ${{mode:2,brightness:0.3,enabled:false}}
-            ${DECREASE_BRIGHTNESS}|${{mode:0,brightness:0.2,enabled:true}} | ${{mode:0,brightness:0.2,enabled:true}}
-            ${INCREASE_BRIGHTNESS}|${{mode:0,brightness:1,enabled:true}}   | ${{mode:0,brightness:1,enabled:true}}
+        `     action          |              initialState               |              changedState
+     ${'TOGGLE_MODE'}         | ${initialState}                         | ${{...initialState, mode:1}}
+     ${'TOGGLE_SWITCHER'}     | ${initialState}                         | ${{...initialState, mode:2, enabled:false}}
+     ${'INCREASE_BRIGHTNESS'} | ${initialState}                         | ${{...initialState, brightness:0.4}}
+     ${'DECREASE_BRIGHTNESS'} | ${initialState}                         | ${{...initialState, brightness:0.2}}
+     ${'TOGGLE_MODE'}         | ${{...initialState, mode:1}}            | ${{...initialState, mode:2}}
+     ${'TOGGLE_MODE'}         | ${{...initialState, mode:2}}            | ${{...initialState, mode:0}}
+     ${'TOGGLE_SWITCHER'}     | ${{...initialState, enabled:false}}     | ${{...initialState, enabled:true}}
+     ${'TOGGLE_SWITCHER'}     | ${{mode:0,brightness:1,enabled:false}}  | ${{mode:0,brightness:0.3,enabled:true}}
+     ${'TOGGLE_SWITCHER'}     | ${{mode:0,brightness:1,enabled:true}}   | ${{mode:2,brightness:0.3,enabled:false}}
+     ${'DECREASE_BRIGHTNESS'} | ${{...initialState, brightness:0.2}}    | ${{...initialState, brightness:0.2}}
+     ${'INCREASE_BRIGHTNESS'} | ${{...initialState, brightness:1}}      | ${{...initialState, brightness:1}}
            
     `('should handle $action and change store from $initialState to $changedState',
         ({action, initialState, changedState}) => {
