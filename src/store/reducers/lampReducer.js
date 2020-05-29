@@ -10,22 +10,20 @@ const initialState = {
 };
 
 export default function lampReducer(state = initialState, {type}) {
+    if(type !== TOGGLE_SWITCHER && !state.enabled) return state;
     switch (type) {
         case TOGGLE_MODE:
-            if (!state.enabled) return state;
             return {
                 ...state,
                 mode: LAMP_STATES[state.mode + 1] || LAMP_STATES[0],
             };
         case INCREASE_BRIGHTNESS:
-            if (!state.enabled) return state;
             return {
                 ...state,
                 brightness: Math.min(BRIGHTNESS_STATES.MAX_BRIGHTNESS,
                     Number((state.brightness + BRIGHTNESS_STATES.STEP).toFixed(1)))
             };
         case DECREASE_BRIGHTNESS:
-            if (!state.enabled) return state;
             return {
                 ...state,
                 brightness: Math.max(BRIGHTNESS_STATES.MIN_BRIGHTNESS,
