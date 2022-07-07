@@ -1,18 +1,31 @@
 import React from "react";
-import {useDispatch} from "react-redux";
-import {decreaseBrightness, increaseBrightness} from "../store/actions/lampActions";
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+
+import { lampState } from '../store/atoms/lampState';
+import { BRIGHTNESS_STATES } from '../store/constants/states';
+import { getBrightness, getEnabled } from '../store/selectors/lampSelectors';
+
 import '../style/controlButtons.css';
 
 const BrightnessButtons = () => {
-
-    const dispatch = useDispatch();
-
+    const enabled = useRecoilValue(getEnabled);
+    const brightness = useRecoilValue(getBrightness);
+    const setLampState = useSetRecoilState(lampState);
+    
     const decreaseHandler = () => {
-        dispatch(decreaseBrightness());
+        if (!enabled) return;
+        setLampState((prev) => ({
+            ...prev, brightness: Math.max(BRIGHTNESS_STATES.MIN_BRIGHTNESS,
+              Number((brightness - BRIGHTNESS_STATES.STEP).toFixed(1)))
+        }))
     }
-
+    
     const increaseHandler = () => {
-        dispatch((increaseBrightness()));
+        if (!enabled) return;
+        setLampState((prev) => ({
+            ...prev, brightness: Math.min(BRIGHTNESS_STATES.MAX_BRIGHTNESS,
+              Number((brightness + BRIGHTNESS_STATES.STEP).toFixed(1)))
+        }))
     }
 
     return (
